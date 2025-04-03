@@ -80,38 +80,37 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // ここでApp.buildメソッドによって作成されたMyHomePageオブジェクトからの値を取得し、
         // AppBarのタイトルに設定しています。
-        title: Text(widget.title),
+        // title: Text(widget.title),
+        title: Row(children: const [Icon(Icons.create), Text("初めてのタイトル")]),
       ),
-      body: Center(
-        // Centerはレイアウトウィジェットです。
-        // 1つの子要素を取り、親の中央に配置します。
-        child: Column(
-          // Columnもレイアウトウィジェットです。
-          // 複数の子要素を取り、縦方向に並べます。
-          // デフォルトでは、子要素に合わせて横幅を決定し、縦幅は親と同じ高さになります。
-          //
-          // Columnは子要素のサイズや位置を制御するさまざまなプロパティを持っています。
-          // ここではmainAxisAlignmentを使用して子要素を縦方向の中央に配置しています。
-          // main axisは縦方向で、cross axisは横方向です。
-          //
-          // 試してみよう: 「デバッグペイント」を呼び出して
-          // (IDEで「Toggle Debug Paint」を選択するか、コンソールで「p」を押す)
-          // 各ウィジェットの枠線を確認してみてください。
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          const Text("Hello World"),
+          const Text("ハローワールド"),
+          TextButton(
+            onPressed: () => {print("ボタンが押されたよ")},
+            child: const Text("テキストボタン"),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(Icons.favorite, color: Colors.red, size: 24.0),
+              Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
+              Icon(Icons.beach_access, color: Colors.blue, size: 36.0),
+            ],
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // 末尾のカンマによりbuildメソッドでの自動整形が綺麗になります。
+        // onPressed: _incrementCounter,
+        // tooltip: 'Increment',
+        // child: const Icon(Icons.add),
+        onPressed: () => {print("押したね？")},
+        child: const Icon(Icons.timer),
+      ),
+      drawer: const Drawer(child: Center(child: Text("Drawer"))),
+      endDrawer: const Drawer(child: Center(child: Text("EndDrawer"))),
+      // 末尾のカンマによりbuildメソッドでの自動整形が綺麗になります。
     );
   }
 }
